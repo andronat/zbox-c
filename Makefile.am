@@ -6,7 +6,7 @@ EXTRA_DIST = .gitignore autogen.sh
 ZBOX_LIB = $(PACKAGE_NAME)
 ZBOX_BINDING = zbox-binding
 ZBOX_VER_LIB = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
-ZBOX_SRC_LIB = ${ZBOX_BINDING}/target/release/$(ZBOX_LIB)
+ZBOX_SRC_LIB = ${ZBOX_BINDING}/target/debug/$(ZBOX_LIB)
 ZBOX_TGT_LIB = $(DESTDIR)$(libdir)/$(ZBOX_VER_LIB)
 
 pkgconfigdir = $(libdir)/pkgconfig
@@ -15,7 +15,7 @@ pkgconfig_DATA = @PACKAGE_NAME@.pc
 DISTCLEANFILES = $(pkgconfig_DATA)
 
 rust:
-	cd $(ZBOX_BINDING) && cargo build --release
+	cd $(ZBOX_BINDING) && cargo build
 
 test:
 	cd test && $(MAKE) check
